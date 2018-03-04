@@ -191,7 +191,7 @@ schedule.every().thursday.at("13:00").do(sendmsg,"Notice: Data Structure II Lect
 schedule.every().friday.at("08:30").do(sendmsg,"Notice: TU110 Lecture 09:00 Incoming + Passed @SC2051",colonel)
 '''
 #schedule.every().monday.at("09:00").do(sendsecurity,testdelc)
-#schedule.every(5).seconds.do(sendsecurity,colonel)
+schedule.every(5).seconds.do(sendsecurity,colonel)
 while(True):
     
     schedule.run_pending()
