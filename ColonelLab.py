@@ -133,9 +133,10 @@ def sendsecurity(who):
         stringsend = "Disk"+ str(amount) + " : "+state
         sendmsg(stringsend,who)
     #Check Ram
-    memoryUse = p.virtual_memory()
+    memoryUse = psutil.virtual_memory()
     memoryUse = memoryUse >> 20
     stringsend = "Ram usage:" + str(memoryUse)+"MB"
+    sendmsg(stringsend,who)
     #CHECK Website
     url = 'http://plab.colonel-tech.com/'
     try :
