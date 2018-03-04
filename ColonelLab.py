@@ -107,7 +107,7 @@ def sendsecurity(who):
     
     #CHeck CPU Percentage
     p = psutil.Process(os.getpid())
-    percent round(psutil.cpu_percent(), 2)
+    percent = round(psutil.cpu_percent(), 2)
     strpercent = float(percent)
     if(strpercent <=50):
         stringsend = str(strpercent) + "% Status: OK"
