@@ -133,8 +133,7 @@ def sendsecurity(who):
         stringsend = "Disk"+ str(amount) + " : "+state
         sendmsg(stringsend,who)
     #Check Ram
-    memoryUse = psutil.virtual_memory()
-    memoryUse = memoryUse >> 20
+    memoryUse = psutil.virtual_memory().total / (1024.0 ** 2)
     stringsend = "Ram usage:" + str(memoryUse)+"MB"
     sendmsg(stringsend,who)
     #CHECK Website
