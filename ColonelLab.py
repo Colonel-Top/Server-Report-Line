@@ -109,15 +109,14 @@ def sendsecurity(who):
     p = psutil.Process(os.getpid())
     percent = round(psutil.cpu_percent(), 3)
     strpercent = float(percent)
-    stringsend = stringsend + "CPU "
     if(strpercent <=50):
-        stringsend = str(strpercent) + "% Status: OK"
+        stringsend = "CPU "+str(strpercent) + "% Status: OK"
     elif(strpercent <= 70):
-        stringsend = str(strpercent) + "% Status: HEAVY"
+        stringsend =  "CPU "+str(strpercent) + "% Status: HEAVY"
     elif(strpercent <= 85):
-        stringsend = str(strpercent) + "% Status: WARNING"
+        stringsend =  "CPU "+str(strpercent) + "% Status: WARNING"
     elif(strpercent <= 100):
-        stringsend = str(strpercent) + "% Status: CRITICAL"
+        stringsend =  "CPU "+str(strpercent) + "% Status: CRITICAL"
     sendmsg(stringsend,who)
     
     #Check Disk Partition
