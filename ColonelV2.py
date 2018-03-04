@@ -40,7 +40,11 @@ from linebot.exceptions import LineBotApiError
 # Login with your Google account
 strws = ""
 groups = ""
-line_bot_api = LineBotApi('9+TH/yJxGzfQ/ZdMlMrmar3RzPjen29VHEw6t6ErubCB7eirHnU9GIyyA+FtU7OIug8tyiGNHpRrub3zg46yLMDPBYEcJyM1kApSNScPJX0KseMvh681J/NS5Ef+1uBpZRi3FBMtNGy17NX/fjxJbAdB04t89/1O/w1cDnyilFU=')
+try:
+    line_bot_api = LineBotApi('9+TH/yJxGzfQ/ZdMlMrmar3RzPjen29VHEw6t6ErubCB7eirHnU9GIyyA+FtU7OIug8tyiGNHpRrub3zg46yLMDPBYEcJyM1kApSNScPJX0KseMvh681J/NS5Ef+1uBpZRi3FBMtNGy17NX/fjxJbAdB04t89/1O/w1cDnyilFU=')
+except Exception as e:
+    print (e)
+    exit(1)
 morning = ['Good morning','Good Morning','อรุณสวัสดิ์ค่ะ','สวัสดีตอนเช้าจ้าา','อรุณสวัสดิ์ยามเช้าครับ','อรุณสวัสดิ์วันใหม่ครับ','อรุณสวัสดิ์ครับ','Good morning']
 afternoon = ['Good afternoon','Good Afternoon','สวัสดีตอนบ่ายครับ','Good afternoon','Good afternoon ครับ']
 night = ['Good Evening','Good evening','สวัสดีตอนเย็นครับ']
