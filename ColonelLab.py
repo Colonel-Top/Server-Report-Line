@@ -107,7 +107,7 @@ def sendsecurity(who):
     
     #CHeck CPU Percentage
     p = psutil.Process(os.getpid())
-    percent = p.cpu_percent() / psutil.cpu_count()
+    percent = p.cpu_percent()
     strpercent = float(percent)
     if(strpercent <=50):
         stringsend = str(strpercent) + "% Status: OK"
@@ -155,8 +155,9 @@ def sendsecurity(who):
         html = response.read()
         sendmsg("Website is Up, Respondable",who)
     #os.remove('tmp')
-    stringsend = "Colonel Lab (Colony Lab) Reported" + textnow
+    stringsend = "Colonel Lab (Colony Lab) Reported"
     sendmsg(stringsend,who)
+    sendmsg("=============",who)
     
         
        
