@@ -107,14 +107,16 @@ def sendsecurity(who):
     
     #CHeck CPU Percentage
     p = psutil.Process(os.getpid())
-    if(p.cpu_percent() <=50):
-        stringsend = (p.cpu_percent) + "% Status: OK"
-    elif(p.cpu_percent() <= 70):
-        stringsend = (p.cpu_percent) + "% Status: HEAVY"
-    elif(p.cpu_percent() <= 85):
-        stringsend = (p.cpu_percent) + "% Status: WARNING"
-    elif(p.cpu_percent() <= 100):
-        stringsend = (p.cpu_percent) + "% Status: CRITICAL"
+    percent = round(psutil.cpu_percent(), 3)
+    strpercent = float(percent)
+    if(strpercent <=50):
+        stringsend = "CPU "+str(strpercent) + "% Status: OK"
+    elif(strpercent <= 70):
+        stringsend =  "CPU "+str(strpercent) + "% Status: HEAVY"
+    elif(strpercent <= 85):
+        stringsend =  "CPU "+str(strpercent) + "% Status: WARNING"
+    elif(strpercent <= 100):
+        stringsend =  "CPU "+str(strpercent) + "% Status: CRITICAL"
     sendmsg(stringsend,who)
     
     #Check Disk Partition
@@ -128,8 +130,15 @@ def sendsecurity(who):
         critical = 0.95
         if f > warning: state="WARNING"
         if f > critical: state="CRITICAL"
-        stringsend = "Disk"+ str(amount) + " : "+state
+        stringsend = "Disk"+ str(amount)+" "+str(f*100)+"%"+ " : "+state
         sendmsg(stringsend,who)
+    #Check Ram
+
+    p = psutil.Process(os.getpid())
+    memoryUse = psutil.virtual_memory().total / (1024.0 ** 3)
+    mem = p.memory_percent()
+    stringsend = "Memory usage: " +str(mem)+"%"
+    sendmsg(stringsend,who)
     
     #CHECK Website
     url = 'http://delc-edu.com/'
@@ -146,9 +155,9 @@ def sendsecurity(who):
         html = response.read()
         sendmsg("Website is Up, Respondable",who)
     #os.remove('tmp')
-    stringsend = "Colonel Technology V3 (DELC) Reported" + textnow
+    stringsend = "Colonel Technology V3 (DELC) Reported"
     sendmsg(stringsend,who)
-    
+    sendmsg("=============",who)
         
        
 
@@ -176,7 +185,7 @@ schedule.every().thursday.at("13:00").do(sendmsg,"Notice: Data Structure II Lect
 schedule.every().friday.at("08:30").do(sendmsg,"Notice: TU110 Lecture 09:00 Incoming + Passed @SC2051",colonel)
 '''
 #schedule.every().monday.at("09:00").do(sendsecurity,testdelc)
-#schedule.every(5).seconds.do(sendsecurity,testdelc)
+schedule.every(10).seconds.do(sendsecurity,testdelc)
 while(True):
     
     schedule.run_pending()
