@@ -156,7 +156,7 @@ def sendsecurity(who):
         print 'We failed to reach a server. Reason:', str(e.reason)
     else :
         html = response.read()
-       stringsend= stringsend + "\n\n" + "Website is Up, Respondable"
+        stringsend= stringsend + "\n\n" + "Website is Up, Respondable"
     #os.remove('tmp')
     stringsend = stringsend + "\n\n" +"Colonel Technology V4 \n(KNS) Reported"
     sendmsg(stringsend,who)
