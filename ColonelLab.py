@@ -107,8 +107,9 @@ def sendsecurity(who):
     
     #CHeck CPU Percentage
     p = psutil.Process(os.getpid())
-    percent = round(psutil.cpu_percent(), 2)
+    percent = round(psutil.cpu_percent(), 3)
     strpercent = float(percent)
+    stringsend = stringsend + "CPU "
     if(strpercent <=50):
         stringsend = str(strpercent) + "% Status: OK"
     elif(strpercent <= 70):
@@ -130,14 +131,14 @@ def sendsecurity(who):
         critical = 0.95
         if f > warning: state="WARNING"
         if f > critical: state="CRITICAL"
-        stringsend = "Disk"+ str(amount) + " : "+state
+        stringsend = "Disk"+ str(amount)+" "+str(f*100)+"%"+ " : "+state
         sendmsg(stringsend,who)
     #Check Ram
 
     p = psutil.Process(os.getpid())
     memoryUse = psutil.virtual_memory().total / (1024.0 ** 3)
     mem = p.memory_percent()
-    stringsend = "Ram usage: " +str(mem)+"%"
+    stringsend = "Memory usage: " +str(mem)+"%"
     sendmsg(stringsend,who)
     
     #CHECK Website
