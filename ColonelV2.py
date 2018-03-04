@@ -164,7 +164,7 @@ def sendsecurity(who):
 
 
 schedule.every().day.at("09:14").do(sendsecurity,colonel)
-schedule.every().day.at("19:16").do(sendsecurity,colonel)
+schedule.every().day.at("19:14").do(sendsecurity,colonel)
 print ('Start Running')
 
 #schedule.every().day.at("07:30").do(sendgoodmorning,preperform)
