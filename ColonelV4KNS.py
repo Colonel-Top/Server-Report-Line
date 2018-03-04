@@ -136,7 +136,7 @@ def sendsecurity(who):
 
     p = psutil.Process(os.getpid())
     memoryUse = psutil.virtual_memory().total / (1024.0 ** 2)
-    mem = p.memory_percent()
+    mem = psutil.virtual_memory().percent
     stringsend = "Memory usage: " +str(mem)+"%"
     sendmsg(stringsend,who)
     
