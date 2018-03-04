@@ -103,21 +103,21 @@ def sendsecurity(who):
     #Send Date
     textnow = datetime.now().strftime('%d-%m-%Y')
     stringsend = "Colonel Technology V3 (DELC) Report Date: " + textnow
-    sendmsg(stringsend,who)
+    #sendmsg(stringsend,who)
     
     #CHeck CPU Percentage
     p = psutil.Process(os.getpid())
     percent = round(psutil.cpu_percent(), 3)
     strpercent = float(percent)
     if(strpercent <=50):
-        stringsend = "CPU "+str(strpercent) + "% Status: OK"
+        stringsend = stringsend + "\n" +"CPU "+str(strpercent) + "% Status: OK"
     elif(strpercent <= 70):
-        stringsend =  "CPU "+str(strpercent) + "% Status: HEAVY"
+        stringsend = stringsend + "\n" + "CPU "+str(strpercent) + "% Status: HEAVY"
     elif(strpercent <= 85):
-        stringsend =  "CPU "+str(strpercent) + "% Status: WARNING"
+        stringsend = stringsend + "\n" + "CPU "+str(strpercent) + "% Status: WARNING"
     elif(strpercent <= 100):
-        stringsend =  "CPU "+str(strpercent) + "% Status: CRITICAL"
-    sendmsg(stringsend,who)
+        stringsend = stringsend + "\n" + "CPU "+str(strpercent) + "% Status: CRITICAL"
+    #sendmsg(stringsend,who)
     
     #Check Disk Partition
     amount = 0
@@ -130,15 +130,15 @@ def sendsecurity(who):
         critical = 0.95
         if f > warning: state="WARNING"
         if f > critical: state="CRITICAL"
-        stringsend = "Disk"+ str(amount)+" "+str(f*100)+"%"+ " : "+state
-        sendmsg(stringsend,who)
+        stringsend = stringsend + "\n" + "Disk"+ str(amount)+" "+str(f*100)+"%"+ " : "+state
+        #sendmsg(stringsend,who)
     #Check Ram
 
     p = psutil.Process(os.getpid())
     memoryUse = psutil.virtual_memory().total / (1024.0 ** 2)
     mem = psutil.virtual_memory().percent
-    stringsend = "Memory usage: " +str(mem)+"%"
-    sendmsg(stringsend,who)
+    stringsend =stringsend + "\n" + "Memory usage: " +str(mem)+"%"
+    #sendmsg(stringsend,who)
     
     #CHECK Website
     url = 'http://delc-edu.com/'
@@ -146,16 +146,16 @@ def sendsecurity(who):
         response = urlopen( url )
     except HTTPError, e:
         print 'The server couldn\'t fulfill the request. Reason:', str(e.code)
-        sendmsg("restarting mysql & nginx",who)
+        stringsend = stringsend + "\n" + "restarting mysql & nginx"
         os.system("service mysql restart")
         os.system("service nginx restart")
     except URLError, e:
         print 'We failed to reach a server. Reason:', str(e.reason)
     else :
         html = response.read()
-        sendmsg("Website is Up, Respondable",who)
+        stringsend = stringsend + "\n" + "Website is Up, Respondable"
     #os.remove('tmp')
-    stringsend = "Colonel Technology V3 (DELC) Reported"
+    stringsend = stringsend + "\n" +"Colonel Technology V3 (DELC) Reported"
     sendmsg(stringsend,who)
     sendmsg("=============",who)
         
