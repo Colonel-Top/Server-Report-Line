@@ -108,13 +108,13 @@ def sendsecurity(who):
     #CHeck CPU Percentage
     p = psutil.Process(os.getpid())
     if(p.cpu_percent() <=50):
-        stringsend = str(p.cpu_percent) + "% Status: OK"
+        stringsend = (p.cpu_percent) + "% Status: OK"
     elif(p.cpu_percent() <= 70):
-        stringsend = str(p.cpu_percent) + "% Status: HEAVY"
+        stringsend = (p.cpu_percent) + "% Status: HEAVY"
     elif(p.cpu_percent() <= 85):
-        stringsend = str(p.cpu_percent) + "% Status: WARNING"
+        stringsend = (p.cpu_percent) + "% Status: WARNING"
     elif(p.cpu_percent() <= 100):
-        stringsend = str(p.cpu_percent) + "% Status: CRITICAL"
+        stringsend = (p.cpu_percent) + "% Status: CRITICAL"
     sendmsg(stringsend,who)
     
     #Check Disk Partition
@@ -145,7 +145,7 @@ def sendsecurity(who):
     else :
         html = response.read()
         sendmsg("Website is Up, Respondable",who)
-    os.remove('tmp')
+    #os.remove('tmp')
     stringsend = "Colonel Technology V3 (DELC) Reported" + textnow
     sendmsg(stringsend,who)
     
