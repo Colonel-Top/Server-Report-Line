@@ -114,13 +114,13 @@ def sendsecurity(who):
     percent = round(psutil.cpu_percent(), 3)
     strpercent = float(percent)
     if(strpercent <=50):
-        stringsend = stringsend + "\n" +"CPU "+str(strpercent) + "% Status: OK"
+        stringsend = stringsend + "\n\n" +"CPU "+str(strpercent) + "% Status: OK"
     elif(strpercent <= 70):
-        stringsend =  stringsend + "\n" +"CPU "+str(strpercent) + "% Status: HEAVY"
+        stringsend =  stringsend + "\n\n" +"CPU "+str(strpercent) + "% Status: HEAVY"
     elif(strpercent <= 85):
-        stringsend = stringsend + "\n" + "CPU "+str(strpercent) + "% Status: WARNING"
+        stringsend = stringsend + "\n\n" + "CPU "+str(strpercent) + "% Status: WARNING"
     elif(strpercent <= 100):
-        stringsend = stringsend + "\n" + "CPU "+str(strpercent) + "% Status: CRITICAL"
+        stringsend = stringsend + "\n\n" + "CPU "+str(strpercent) + "% Status: CRITICAL"
     #sendmsg(stringsend,who)
     
     #Check Disk Partition
@@ -134,14 +134,17 @@ def sendsecurity(who):
         critical = 0.95
         if f > warning: state="WARNING"
         if f > critical: state="CRITICAL"
-        stringsend = stringsend + "\n" +"Disk"+ str(amount)+" "+str(f*100)+"%"+ " : "+state
+        stringsend = stringsend + "\n\n" +"Disk"+ str(amount)+" "+str(f*100)+"%"+ " : "+state
         #sendmsg(stringsend,who)
     #Check Ram
 
     p = psutil.Process(os.getpid())
     memoryUse = psutil.virtual_memory().total / (1024.0 ** 2)
     mem = psutil.virtual_memory().percent
-    stringsend = stringsend + "\n" +"Memory usage: " +str(mem)+"%"
+    state = "OK"
+    if mem > 85:state = "WARNING"
+    if mem > 90:state = "CRITICAL"
+    stringsend = stringsend + "\n\n" +"Memory usage: " +str(mem)+"% : "+state
     #sendmsg(stringsend,who)
     
     #CHECK Website
@@ -157,9 +160,9 @@ def sendsecurity(who):
         print 'We failed to reach a server. Reason:', str(e.reason)
     else :
         html = response.read()
-        stringsend = stringsend + "\n" +"Website is Up, Respondable"
+        stringsend = stringsend + "\n\n" +"Website is Up, Respondable"
     #os.remove('tmp')
-    stringsend = stringsend + "\n" + "Colonel Technology V2 (Colonel-Tech) Reported"
+    stringsend = stringsend + "\n\n" + "Colonel Technology V2 \n(Colonel-Tech) Reported"
     sendmsg(stringsend,who)
     sendmsg("=============",who)
     
