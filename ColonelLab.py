@@ -108,15 +108,15 @@ def sendsecurity(who):
     #CHeck CPU Percentage
     p = psutil.Process(os.getpid())
     percent = p.cpu_percent() / psutil.cpu_count()
-    strpercent = str(percent)
+    strpercent = float(percent)
     if(strpercent <=50):
-        stringsend = strpercent + "% Status: OK"
+        stringsend = str(strpercent) + "% Status: OK"
     elif(strpercent <= 70):
-        stringsend = strpercent + "% Status: HEAVY"
+        stringsend = str(strpercent) + "% Status: HEAVY"
     elif(strpercent <= 85):
-        stringsend = strpercent + "% Status: WARNING"
+        stringsend = str(strpercent) + "% Status: WARNING"
     elif(strpercent <= 100):
-        stringsend = strpercent + "% Status: CRITICAL"
+        stringsend = str(strpercent) + "% Status: CRITICAL"
     sendmsg(stringsend,who)
     
     #Check Disk Partition
@@ -133,9 +133,13 @@ def sendsecurity(who):
         stringsend = "Disk"+ str(amount) + " : "+state
         sendmsg(stringsend,who)
     #Check Ram
-    memoryUse = psutil.virtual_memory() / (1024.0 ** 2)
-    stringsend = "Ram usage:" + str(memoryUse)+"MB"
+
+    p = psutil.Process(os.getpid())
+    memoryUse = psutil.virtual_memory().total / (1024.0 ** 3)
+    mem = p.memory_percent()
+    stringsend = "Ram usage: " +str(mem)+"%"
     sendmsg(stringsend,who)
+    
     #CHECK Website
     url = 'http://plab.colonel-tech.com/'
     try :
