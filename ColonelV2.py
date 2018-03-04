@@ -109,11 +109,11 @@ def sendsecurity(who):
     p = psutil.Process(os.getpid())
     if(p.cpu_percent() <=50):
         stringsend = str(p.cpu_percent) + "% Status: OK"
-    elif(p.cpu_percent() <= 70)
+    elif(p.cpu_percent() <= 70):
         stringsend = str(p.cpu_percent) + "% Status: HEAVY"
-    elif(p.cpu_percent() <= 85)
+    elif(p.cpu_percent() <= 85):
         stringsend = str(p.cpu_percent) + "% Status: WARNING"
-    elif(p.cpu_percent() <= 100)
+    elif(p.cpu_percent() <= 100):
         stringsend = str(p.cpu_percent) + "% Status: CRITICAL"
     sendmsg(stringsend,who)
     
