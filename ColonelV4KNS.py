@@ -31,7 +31,7 @@ from linebot.models import StickerSendMessage
 from linebot.models import TemplateSendMessage
 from linebot.exceptions import LineBotApiError
 
-#line_bot_api = LineBotApi('Q8BjDP5iRdj+FprSJXxyDk95z358K0355D7rTRTBuubd0z+0XFTanFHD+yPyR7uAIOKtdpbtv99HxxSgm49QEOxmYI/PrA5Hlt3l4TYVVoxPYPYRS4G/7eVMr8YldmlybqUabhXknXephfGwzB1GXgdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('9+TH/yJxGzfQ/ZdMlMrmar3RzPjen29VHEw6t6ErubCB7eirHnU9GIyyA+FtU7OIug8tyiGNHpRrub3zg46yLMDPBYEcJyM1kApSNScPJX0KseMvh681J/NS5Ef+1uBpZRi3FBMtNGy17NX/fjxJbAdB04t89/1O/w1cDnyilFU=')
 
 #line_bot_api.push_message(associateid, TextSendMessage(text="การตัดดอกเบี้ยเสร็จเรียบร้อยค่ะ"))
 #line_bot_api.push_message(group, TextSendMessage(text= "Google API Connected")
@@ -40,7 +40,7 @@ from linebot.exceptions import LineBotApiError
 # Login with your Google account
 strws = ""
 groups = ""
-line_bot_api = LineBotApi('QWiSqwAAs1/FyPo+Rt+jKoxjjK+LbkQ1pC1zsmCO9s5g2YO9EFUsSKO90ABQpc8h31iecVkjMsG3IZ2J9xCcS5pHL0ph8nc81PIM+gJEFzkJpHIRBWiJQl7sh6dOuuApuPMC+aj1HjkT5iaHCXDJ5AdB04t89/1O/w1cDnyilFU=')
+#line_bot_api = LineBotApi('QWiSqwAAs1/FyPo+Rt+jKoxjjK+LbkQ1pC1zsmCO9s5g2YO9EFUsSKO90ABQpc8h31iecVkjMsG3IZ2J9xCcS5pHL0ph8nc81PIM+gJEFzkJpHIRBWiJQl7sh6dOuuApuPMC+aj1HjkT5iaHCXDJ5AdB04t89/1O/w1cDnyilFU=')
 morning = ['Good morning','Good Morning','อรุณสวัสดิ์ค่ะ','สวัสดีตอนเช้าจ้าา','อรุณสวัสดิ์ยามเช้าครับ','อรุณสวัสดิ์วันใหม่ครับ','อรุณสวัสดิ์ครับ','Good morning']
 afternoon = ['Good afternoon','Good Afternoon','สวัสดีตอนบ่ายครับ','Good afternoon','Good afternoon ครับ']
 night = ['Good Evening','Good evening','สวัสดีตอนเย็นครับ']
